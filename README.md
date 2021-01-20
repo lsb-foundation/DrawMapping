@@ -8,3 +8,4 @@ mapping.InitializeMapping(10, 10);
 mapping.FocusRect(1, 1);
 mapping.FillRect(1, 1, "test item");
 ```
+![示例](Snipaste_1.png)
