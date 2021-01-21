@@ -1,5 +1,8 @@
 ﻿# DrawMapping
 使用Rectangle绘制的一个Mapping控件(Winform).
+
+![示例](./ScreenRecord.gif)
+
 ## 代码示例
 ```csharp
 Mapping mapping = new Mapping();
@@ -9,7 +12,6 @@ mapping.InitializeMapping(10, 10);
 mapping.Focus(1, 1);
 mapping.Fill(1, 1, "test item");
 ```
-![示例](./Snipaste_1.png)
 
 ## 可在Visual Studio属性窗口中设置的项目
 1. InitializedColor: 初始化Rectangle外边框的颜色；

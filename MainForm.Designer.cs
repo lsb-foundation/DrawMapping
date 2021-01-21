@@ -122,14 +122,14 @@ namespace DrawMapping
             // 
             // mapping
             // 
+            this.mapping.BorderWidth = 3F;
             this.mapping.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mapping.FilledColor = System.Drawing.Color.DarkGreen;
             this.mapping.FocusedColor = System.Drawing.Color.YellowGreen;
             this.mapping.HorizontalSpace = 10;
-            this.mapping.InitializedColor = System.Drawing.Color.OrangeRed;
+            this.mapping.InitializedColor = System.Drawing.Color.DeepSkyBlue;
             this.mapping.Location = new System.Drawing.Point(0, 0);
             this.mapping.Name = "mapping";
-            this.mapping.BorderWidth = 3F;
             this.mapping.Size = new System.Drawing.Size(1217, 782);
             this.mapping.TabIndex = 0;
             this.mapping.VerticalSpace = 20;
