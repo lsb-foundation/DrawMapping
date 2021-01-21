@@ -30,15 +30,15 @@ namespace DrawMapping
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.xTextBox = new System.Windows.Forms.TextBox();
-            this.yTextBox = new System.Windows.Forms.TextBox();
-            this.genButton = new System.Windows.Forms.Button();
-            this.fillButton = new System.Windows.Forms.Button();
             this.fillTextBox = new System.Windows.Forms.TextBox();
+            this.genButton = new System.Windows.Forms.Button();
+            this.yTextBox = new System.Windows.Forms.TextBox();
+            this.xTextBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.mapping = new DrawMapping.Mapping();
+            this.fillButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -59,47 +59,13 @@ namespace DrawMapping
             this.panel1.Size = new System.Drawing.Size(1217, 101);
             this.panel1.TabIndex = 0;
             // 
-            // panel2
+            // fillTextBox
             // 
-            this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel2.Controls.Add(this.mapping);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 101);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1217, 782);
-            this.panel2.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 21);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "X:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 62);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(32, 21);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Y:";
-            // 
-            // xTextBox
-            // 
-            this.xTextBox.Location = new System.Drawing.Point(62, 10);
-            this.xTextBox.Name = "xTextBox";
-            this.xTextBox.Size = new System.Drawing.Size(100, 31);
-            this.xTextBox.TabIndex = 2;
-            // 
-            // yTextBox
-            // 
-            this.yTextBox.Location = new System.Drawing.Point(62, 52);
-            this.yTextBox.Name = "yTextBox";
-            this.yTextBox.Size = new System.Drawing.Size(100, 31);
-            this.yTextBox.TabIndex = 3;
+            this.fillTextBox.Location = new System.Drawing.Point(333, 12);
+            this.fillTextBox.Multiline = true;
+            this.fillTextBox.Name = "fillTextBox";
+            this.fillTextBox.Size = new System.Drawing.Size(252, 71);
+            this.fillTextBox.TabIndex = 5;
             // 
             // genButton
             // 
@@ -112,6 +78,62 @@ namespace DrawMapping
             this.genButton.UseVisualStyleBackColor = true;
             this.genButton.Click += new System.EventHandler(this.genButton_Click);
             // 
+            // yTextBox
+            // 
+            this.yTextBox.Location = new System.Drawing.Point(62, 52);
+            this.yTextBox.Name = "yTextBox";
+            this.yTextBox.Size = new System.Drawing.Size(100, 31);
+            this.yTextBox.TabIndex = 3;
+            // 
+            // xTextBox
+            // 
+            this.xTextBox.Location = new System.Drawing.Point(62, 10);
+            this.xTextBox.Name = "xTextBox";
+            this.xTextBox.Size = new System.Drawing.Size(100, 31);
+            this.xTextBox.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(24, 62);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(32, 21);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Y:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(24, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(32, 21);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "X:";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel2.Controls.Add(this.mapping);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 101);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1217, 782);
+            this.panel2.TabIndex = 1;
+            // 
+            // mapping
+            // 
+            this.mapping.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mapping.FilledColor = System.Drawing.Color.DarkGreen;
+            this.mapping.FocusedColor = System.Drawing.Color.YellowGreen;
+            this.mapping.HorizontalSpace = 10;
+            this.mapping.InitializedColor = System.Drawing.Color.OrangeRed;
+            this.mapping.Location = new System.Drawing.Point(0, 0);
+            this.mapping.Name = "mapping";
+            this.mapping.BorderWidth = 3F;
+            this.mapping.Size = new System.Drawing.Size(1217, 782);
+            this.mapping.TabIndex = 0;
+            this.mapping.VerticalSpace = 20;
+            // 
             // fillButton
             // 
             this.fillButton.ForeColor = System.Drawing.Color.Black;
@@ -122,22 +144,6 @@ namespace DrawMapping
             this.fillButton.Text = "Fill";
             this.fillButton.UseVisualStyleBackColor = true;
             this.fillButton.Click += new System.EventHandler(this.fillButton_Click);
-            // 
-            // fillTextBox
-            // 
-            this.fillTextBox.Location = new System.Drawing.Point(333, 12);
-            this.fillTextBox.Multiline = true;
-            this.fillTextBox.Name = "fillTextBox";
-            this.fillTextBox.Size = new System.Drawing.Size(252, 71);
-            this.fillTextBox.TabIndex = 5;
-            // 
-            // mapping
-            // 
-            this.mapping.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mapping.Location = new System.Drawing.Point(0, 0);
-            this.mapping.Name = "mapping";
-            this.mapping.Size = new System.Drawing.Size(1217, 782);
-            this.mapping.TabIndex = 0;
             // 
             // MainForm
             // 

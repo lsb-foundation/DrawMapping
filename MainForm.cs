@@ -28,7 +28,7 @@ namespace DrawMapping
         {
             if (column >= mapping.YCount) return;
 
-            mapping.FillRect(row, column, fillTextBox.Text.Trim());
+            mapping.Fill(row, column, fillTextBox.Text.Trim());
             row++;
             if (row >= mapping.XCount)
             {
@@ -37,7 +37,7 @@ namespace DrawMapping
             }
             if (column < mapping.YCount)
             {
-                mapping.FocusRect(row, column);
+                mapping.Focus(row, column);
             }
         }
     }
