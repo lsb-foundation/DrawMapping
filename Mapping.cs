@@ -26,6 +26,7 @@ namespace DrawMapping
         public int YCount { get; private set; }
         public int HorizontalSpace { get; set; }
         public int VerticalSpace { get; set; }
+        public StartDirection StartDirection { get; set; }
         public Color InitializedColor
         {
             get => _initializePen.Color;
@@ -66,7 +67,6 @@ namespace DrawMapping
             YCount = yCount;
             mappingStates = new short[xCount, yCount];
             mappingTexts = new string[xCount, yCount];
-            mappingStates[0, 0] = 1;
             initialized = true;
             Draw();
         }
@@ -76,13 +76,11 @@ namespace DrawMapping
             CheckInitializedStatus();
             Controls.Clear();
             _graphics.Clear(Parent.BackColor);
-            int xLocation = HorizontalSpace;
             for (int x = 0; x < XCount; x++)
             {
-                int yLocation = VerticalSpace;
                 for (int y = 0; y < YCount; y++)
                 {
-                    var point = new Point(xLocation, yLocation);
+                    var point = ComputeLocation(x, y);
                     switch (mappingStates[x, y])
                     {
                         case 1:
@@ -96,9 +94,7 @@ namespace DrawMapping
                             DrawInitializedRectangle(point);
                             break;
                     }
-                    yLocation += RectHeight + VerticalSpace;
                 }
-                xLocation += RectWidth + HorizontalSpace;
             }
         }
 
@@ -106,9 +102,7 @@ namespace DrawMapping
         {
             CheckInitializedStatus();
             CheckXY(x, y);
-            int xLocation = (x + 1) * HorizontalSpace + x * RectWidth;
-            int yLocation = (y + 1) * VerticalSpace + y * RectHeight;
-            DrawFocusedRectangle(new Point(xLocation, yLocation));
+            DrawFocusedRectangle(ComputeLocation(x, y));
             mappingStates[x, y] = 1;
         }
 
@@ -116,11 +110,34 @@ namespace DrawMapping
         {
             CheckInitializedStatus();
             CheckXY(x, y);
-            int xLocation = (x + 1) * HorizontalSpace + x * RectWidth;
-            int yLocation = (y + 1) * VerticalSpace + y * RectHeight;
-            DrawFilledRectangle(new Point(xLocation, yLocation), text);
+            DrawFilledRectangle(ComputeLocation(x, y), text);
             mappingStates[x, y] = 2;
             mappingTexts[x, y] = text;
+        }
+
+        private Point ComputeLocation(int x, int y)
+        {
+            int xLocation = 0, yLocation = 0;
+            switch (StartDirection)
+            {
+                case StartDirection.LeftBottom:
+                    xLocation = (x + 1) * HorizontalSpace + x * RectWidth;
+                    yLocation = (YCount - y) * VerticalSpace + (YCount - y - 1) * RectHeight;
+                    break;
+                case StartDirection.RightBottom:
+                    xLocation = (XCount - x) * HorizontalSpace + (XCount - x - 1) * RectWidth;
+                    yLocation = (YCount - y) * VerticalSpace + (YCount - y - 1) * RectHeight;
+                    break;
+                case StartDirection.LeftTop:
+                    xLocation = (x + 1) * HorizontalSpace + x * RectWidth;
+                    yLocation = (y + 1) * VerticalSpace + y * RectHeight;
+                    break;
+                case StartDirection.RightTop:
+                    xLocation = (XCount - x) * HorizontalSpace + (XCount - x - 1) * RectWidth;
+                    yLocation = (y + 1) * VerticalSpace + y * RectHeight;
+                    break;
+            }
+            return new Point(xLocation, yLocation);
         }
 
         private void DrawInitializedRectangle(Point point) =>
@@ -189,5 +206,13 @@ namespace DrawMapping
     public sealed class MappingNeedInitializeException : Exception
     {
         public MappingNeedInitializeException() : base("Need call InitializeMapping method before using.") { }
+    }
+
+    public enum StartDirection
+    {
+        LeftBottom,
+        RightBottom,
+        LeftTop,
+        RightTop
     }
 }

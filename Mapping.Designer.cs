@@ -35,6 +35,7 @@ namespace DrawMapping
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.Name = "Mapping";
             this.Size = new System.Drawing.Size(3840, 2160);
             this.Resize += new System.EventHandler(this.Mapping_Resize);
