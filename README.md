@@ -7,6 +7,7 @@
 ```csharp
 Mapping mapping = new Mapping();
 mapping.Dock = DockStyle.Fill;
+mapping.StartDirection = StartDirection.LeftBottom;
 panel.Controls.Add(mapping);
 mapping.InitializeMapping(10, 10);
 mapping.Focus(1, 1);
@@ -20,3 +21,4 @@ mapping.Fill(1, 1, "test item");
 4. HorizontalSpace: 每两个Rectangle在水平方向的间距;
 5. VerticalSpace: 每两个Rectangle在垂直方向的间距;
 6. BorderWidth: 绘制Rectangle的边框宽度;
+7. StartDirection: 设置坐标原点位置，支持：LeftBottom(左下)、RightBottom(右下)、LeftTop(左上)、RightTop(右上)四个角。
