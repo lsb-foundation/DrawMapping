@@ -5,12 +5,12 @@ namespace DrawMapping
 {
     public partial class MainForm : Form
     {
-        private int row = 0;
-        private int column = 0;
+        private System.Drawing.Point position;
 
         public MainForm()
         {
             InitializeComponent();
+            cmbDirection.SelectedIndex = 0;
         }
 
         private void genButton_Click(object sender, EventArgs e)
@@ -20,24 +20,44 @@ namespace DrawMapping
 
             if (!canParse) return;
 
+            string direction = cmbDirection.SelectedItem as string;
+            switch (direction)
+            {
+                case "Left Bottom":
+                    mapping.StartDirection = StartDirection.LeftBottom;
+                    break;
+                case "Right Bottom":
+                    mapping.StartDirection = StartDirection.RightBottom;
+                    break;
+                case "Left Top":
+                    mapping.StartDirection = StartDirection.LeftTop;
+                    break;
+                case "Right Top":
+                    mapping.StartDirection = StartDirection.RightTop;
+                    break;
+            }
             mapping.InitializeMapping(x, y);
-            row = 0; column = 0;
+            position.X = 0;
+            position.Y = 0;
+            mapping.Focus(0, 0);
         }
 
         private void fillButton_Click(object sender, EventArgs e)
         {
-            if (column >= mapping.YCount) return;
-
-            mapping.Fill(row, column, fillTextBox.Text.Trim());
-            row++;
-            if (row >= mapping.XCount)
+            if (position.X >= mapping.XCount) return;
+            mapping.Fill(position.X, position.Y, fillTextBox.Text.Trim());
+            if (position.X < mapping.XCount)
             {
-                column++;
-                row = 0;
+                ++position.Y;
+                if (position.Y >= mapping.YCount)
+                {
+                    ++position.X;
+                    position.Y = 0;
+                }
             }
-            if (column < mapping.YCount)
+            if (position.X < mapping.XCount && position.Y < mapping.YCount)
             {
-                mapping.Focus(row, column);
+                mapping.Focus(position.X, position.Y);
             }
         }
     }

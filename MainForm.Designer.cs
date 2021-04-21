@@ -37,8 +37,10 @@ namespace DrawMapping
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.mapping = new DrawMapping.Mapping();
             this.fillButton = new System.Windows.Forms.Button();
+            this.cmbDirection = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.mapping = new DrawMapping.Mapping();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -46,6 +48,9 @@ namespace DrawMapping
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Maroon;
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.fillButton);
+            this.panel1.Controls.Add(this.cmbDirection);
             this.panel1.Controls.Add(this.fillTextBox);
             this.panel1.Controls.Add(this.genButton);
             this.panel1.Controls.Add(this.yTextBox);
@@ -61,7 +66,7 @@ namespace DrawMapping
             // 
             // fillTextBox
             // 
-            this.fillTextBox.Location = new System.Drawing.Point(333, 12);
+            this.fillTextBox.Location = new System.Drawing.Point(531, 13);
             this.fillTextBox.Multiline = true;
             this.fillTextBox.Name = "fillTextBox";
             this.fillTextBox.Size = new System.Drawing.Size(252, 71);
@@ -70,7 +75,7 @@ namespace DrawMapping
             // genButton
             // 
             this.genButton.ForeColor = System.Drawing.Color.Black;
-            this.genButton.Location = new System.Drawing.Point(178, 10);
+            this.genButton.Location = new System.Drawing.Point(374, 13);
             this.genButton.Name = "genButton";
             this.genButton.Size = new System.Drawing.Size(136, 73);
             this.genButton.TabIndex = 4;
@@ -120,8 +125,43 @@ namespace DrawMapping
             this.panel2.Size = new System.Drawing.Size(1217, 782);
             this.panel2.TabIndex = 1;
             // 
+            // fillButton
+            // 
+            this.fillButton.ForeColor = System.Drawing.Color.Black;
+            this.fillButton.Location = new System.Drawing.Point(802, 10);
+            this.fillButton.Name = "fillButton";
+            this.fillButton.Size = new System.Drawing.Size(136, 71);
+            this.fillButton.TabIndex = 5;
+            this.fillButton.Text = "Fill";
+            this.fillButton.UseVisualStyleBackColor = true;
+            this.fillButton.Click += new System.EventHandler(this.fillButton_Click);
+            // 
+            // cmbDirection
+            // 
+            this.cmbDirection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDirection.FormattingEnabled = true;
+            this.cmbDirection.Items.AddRange(new object[] {
+            "Left Bottom",
+            "Right Bottom",
+            "Left Top",
+            "Right Top"});
+            this.cmbDirection.Location = new System.Drawing.Point(185, 53);
+            this.cmbDirection.Name = "cmbDirection";
+            this.cmbDirection.Size = new System.Drawing.Size(167, 29);
+            this.cmbDirection.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(186, 15);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(120, 21);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Direction:";
+            // 
             // mapping
             // 
+            this.mapping.AutoSize = true;
             this.mapping.BorderWidth = 3F;
             this.mapping.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mapping.FilledColor = System.Drawing.Color.DarkGreen;
@@ -131,26 +171,15 @@ namespace DrawMapping
             this.mapping.Location = new System.Drawing.Point(0, 0);
             this.mapping.Name = "mapping";
             this.mapping.Size = new System.Drawing.Size(1217, 782);
+            this.mapping.StartDirection = DrawMapping.StartDirection.LeftBottom;
             this.mapping.TabIndex = 0;
             this.mapping.VerticalSpace = 20;
-            // 
-            // fillButton
-            // 
-            this.fillButton.ForeColor = System.Drawing.Color.Black;
-            this.fillButton.Location = new System.Drawing.Point(605, 12);
-            this.fillButton.Name = "fillButton";
-            this.fillButton.Size = new System.Drawing.Size(136, 71);
-            this.fillButton.TabIndex = 5;
-            this.fillButton.Text = "Fill";
-            this.fillButton.UseVisualStyleBackColor = true;
-            this.fillButton.Click += new System.EventHandler(this.fillButton_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1217, 883);
-            this.Controls.Add(this.fillButton);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "MainForm";
@@ -158,6 +187,7 @@ namespace DrawMapping
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -174,6 +204,8 @@ namespace DrawMapping
         private Mapping mapping;
         private System.Windows.Forms.Button fillButton;
         private System.Windows.Forms.TextBox fillTextBox;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cmbDirection;
     }
 }
 
